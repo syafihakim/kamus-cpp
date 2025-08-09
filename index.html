@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Video Lead Magnet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes blink-border {
+        0%, 100% {
+          border-color: rgba(255, 0, 0, 0.2); /* faint red */
+        }
+        50% {
+          border-color: rgba(255, 0, 0, 1); /* stronger red */
+        }
+      }
+
+      .blinking-border {
+        border: 2px solid rgba(255, 0, 0, 0.2);
+        animation: blink-border 1s infinite;
+        
+      }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col items-center p-6">
+
+  <!-- Stepper container -->
+  <div class="bg-white max-w-2xl w-full rounded-lg shadow-md p-4 mt-4 mb-6">
+    <div class="flex items-center justify-between">
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center">
+        <button id="step1Circle" 
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white font-bold"
+                onclick="goToStep(1)">
+          1
+        </button>
+        <span class="mt-1 text-xs text-gray-700">Download kamus</span>
+      </div>
+
+      <!-- Line -->
+      <div class="flex-1 h-0.5 bg-gray-300 mx-3"></div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center">
+        <button id="step2Circle" 
+                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold shadow-xl"
+                onclick="goToStep(2)">
+          2
+        </button>
+        <span class="mt-1 text-xs text-gray-700">Claim Bonus</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Step Content -->
+  <div id="step1" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 mb-20">
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 1: Download Kamus Coding C++</h2>
+    <div class="flex-col justify-center">
+      <img src="Kamus_M.png" alt="Cheatsheet Mockup" class="w-3/5 h-auto rounded shadow-md mb-4 mx-auto" />
+      <button id="downloadPdfBtn" onclick="goToStep(2)" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full">
+        Download dan Claim bonus →
+      </button>
+
+      <!-- Toast Notification -->
+      <div id="toast" class="fixed bottom-6 right-6 bg-black bg-opacity-80 text-white px-4 py-2 rounded opacity-0 pointer-events-none transition-opacity duration-300">
+        PDF downloaded!
+      </div>
+
+    </div>
+  </div>
+
+
+  <div id="step2" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hidden mb-20">
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 2: Kelas Coding C++ dari Zero</h2>
+    <p class="text-sm mb-6 text-gray-600">
+      <!-- Harga : RM20 sahaja</br></br> -->
+      💎 Lifetime access</br>
+      🔥 Belajar asas Java dan Python sekaligus!</br>
+      ✅ Belajar anytime, tiada jadual</br>
+      ✅ Latihan disediakan</br>
+      ✅ Video disediakan</br>
+      ✅ Nota disediakan</br></br>
+      Harga tak masuk akal RM20!
+    </p>
+    <div class="bg-gray-500 text-white p-4 text-center mb-4 blinking-border">
+      <div id="loading" class="flex items-center justify-center">
+        <p class="mb-2 text-xs mr-4">
+          Loading bonus anda
+        </p>
+        <svg class="w-6 h-6" fill="hsl(0, 85%, 50%)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
+            <animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/>
+          </path>
+        </svg>
+      </div>
+      <div id="guarantee-content" class="hidden">
+        <p class="mb-2 text-sm">
+          Daftar hari ini untuk dapatkan jaminan
+          <span class="text-yellow-400 font-bold">full refund</span> 
+          jika anda tak berpuas hati
+        </p>
+        <div id="countdown" class="text-l font-bold text-yellow-400"></div>
+      </div>
+    </div>
+
+
+    <a href="https://syafihakim.github.io/cpp-level-1-site/" 
+       class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5 flex justify-center items-center">
+        Lihat detail penuh
+    </a>
+
+
+    <p class="text-xs text-gray-500 mt-4 text-center">
+      35 students pelajar dah join
+    </p>
+
+
+
+  </div>
+
+
+  <!-- Inline JavaScript -->
+  <script>
+
+    const btn = document.getElementById('downloadPdfBtn');
+    const toast = document.getElementById('toast');
+
+    btn.addEventListener('click', () => {
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = 'Kamus_Cpp.pdf';  // Replace with your PDF file path
+      link.download = 'Kamus_Cpp.pdf';       // Optional: force filename for download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Show toast
+      toast.style.opacity = '1';
+      toast.style.pointerEvents = 'auto';
+
+      // Hide toast after 2 seconds
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.pointerEvents = 'none';
+      }, 2000);
+    });
+
+
+    var currStep = 1;
+
+    const targetTime = new Date('2025-08-10T23:59:00');
+
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetTime - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "Tawaran Tamat";
+        return;
+      }
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${hours} jam ${minutes} min ${seconds} saat`;
+    }
+
+    function goToStep(step) {
+      // Hide all steps
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2').classList.add('hidden');
+
+      // Show the selected step
+      document.getElementById('step' + step).classList.remove('hidden');
+
+      // Reset circles
+      // ['step1Circle', 'step2Circle'].forEach(id => {
+      //   document.getElementById(id).classList.remove('bg-blue-500', 'text-white');
+      //   document.getElementById(id).classList.add('bg-gray-300', 'text-gray-600');
+      // });
+
+      // Activate selected circle
+      const active = document.getElementById('step' + step + 'Circle');
+      active.classList.remove('bg-gray-300', 'text-gray-600');
+      active.classList.add('bg-blue-500', 'text-white');
+
+      // const video = document.getElementById("myVideo");
+
+      if (step == 2) {
+        // video.pause();
+        document.getElementById("step1Circle").classList.add('bg-blue-500', 'text-white');
+        document.getElementById("step2Circle").classList.add('bg-blue-500', 'text-white');
+      } else {
+        document.getElementById("step1Circle").classList.add('bg-blue-500', 'text-white');
+        document.getElementById("step2Circle").classList.add('bg-gray-300', 'text-gray-600');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      setTimeout(() => {
+          document.getElementById("loading").classList.add("hidden");
+          document.getElementById("guarantee-content").classList.remove("hidden");
+        }, 5000); // 3 seconds
+
+
+    }
+  </script>
+
+</body>
+</html>
