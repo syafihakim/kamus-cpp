@@ -20,6 +20,17 @@
         animation: blink-border 1s infinite;
         
       }
+
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(10px); }
+        10%, 90% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(10px); }
+      }
+      .animate-fadeIn {
+        animation: fadeInOut 2s ease forwards;
+      }
+
+
   </style>
 </head>
 <body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col items-center p-6">
@@ -58,14 +69,19 @@
     <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 1: Download Kamus Coding C++</h2>
     <div class="flex-col justify-center">
       <img src="Kamus_M.png" alt="Cheatsheet Mockup" class="w-3/5 h-auto rounded shadow-md mb-4 mx-auto" />
-      <button id="downloadPdfBtn" onclick="goToStep(2)" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full">
-        Download dan Claim bonus →
-      </button>
-
-      <!-- Toast Notification -->
-      <div id="toast" class="fixed bottom-6 right-6 bg-black bg-opacity-80 text-white px-4 py-2 rounded opacity-0 pointer-events-none transition-opacity duration-300">
-        PDF downloaded!
+      <!-- Toast container -->
+      <div id="toast" class="hidden fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg text-sm animate-fadeIn">
+        📥 Download started!
       </div>
+
+      <!-- Download Button -->
+      <div class="text-center">
+        <button onclick="startDownload()"
+          class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5">
+          Download Kamus C++
+        </button>
+      </div>
+
 
     </div>
   </div>
@@ -123,29 +139,29 @@
   <!-- Inline JavaScript -->
   <script>
 
-    const btn = document.getElementById('downloadPdfBtn');
-    const toast = document.getElementById('toast');
-
-    btn.addEventListener('click', () => {
-      // Create a temporary link element
-      const link = document.createElement('a');
-      link.href = 'Kamus_Cpp.pdf';  // Replace with your PDF file path
-      link.download = 'Kamus_Cpp.pdf';       // Optional: force filename for download
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+    function startDownload() {
       // Show toast
-      toast.style.opacity = '1';
-      toast.style.pointerEvents = 'auto';
+      const toast = document.getElementById("toast");
+      toast.classList.remove("hidden");
 
-      // Hide toast after 2 seconds
+      // Hide after 2 seconds
       setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.pointerEvents = 'none';
+        toast.classList.add("hidden");
+        goToStep(2);
       }, 2000);
-    });
 
+      // Start download after a tiny delay so toast shows first
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = "Kamus_Coding.pdf"; // must be on same domain
+        link.download = "Kamus_Coding.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 300);
+    }
+
+    const btn = document.getElementById('downloadPdfBtn');
 
     var currStep = 1;
 
