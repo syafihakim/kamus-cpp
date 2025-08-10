@@ -27,7 +27,7 @@
         100% { opacity: 0; transform: translateY(10px); }
       }
       .animate-fadeIn {
-        animation: fadeInOut 2s ease forwards;
+        animation: fadeInOut 5s ease forwards;
       }
 
 
@@ -66,17 +66,21 @@
 
   <!-- Step Content -->
   <div id="step1" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 mb-20">
-    <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 1: Download Kamus Coding C++</h2>
-    <div class="flex-col justify-center">
+    <div id="loadingSpinner" class="hidden bg-white bg-opacity-90 flex flex-col justify-center items-center rounded-2xl z-10">
+      <svg class="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+      </svg>
+      <p class="text-lg text-blue-700 font-semibold">Downloading</p>
+    </div>
+    <div id="step1Content" class="flex-col justify-center">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 1: Download Kamus Coding C++</h2>
       <img src="Kamus_M.png" alt="Cheatsheet Mockup" class="w-3/5 h-auto rounded shadow-md mb-4 mx-auto" />
       <!-- Toast container -->
-      <div id="toast" class="hidden fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg text-sm animate-fadeIn">
-        📥 Download started!
-      </div>
 
       <!-- Download Button -->
       <div class="text-center">
-        <a href="Kamus_Cpp.pdf" download onclick="startDownload()"
+        <a href="#" onclick="startDownload()"
           class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5">
           Download Kamus C++
         </a>
@@ -87,7 +91,7 @@
   </div>
 
 
-  <div id="step2" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hidden mb-20">
+  <div id="step2" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hidden mb-20">  
     <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 2: Kelas Coding C++ dari Zero</h2>
     <p class="text-sm mb-6 text-gray-600">
       <!-- Harga : RM20 sahaja</br></br> -->
@@ -100,17 +104,7 @@
       Harga tak masuk akal RM20!
     </p>
     <div class="bg-gray-500 text-white p-4 text-center mb-4 blinking-border">
-      <div id="loading" class="flex items-center justify-center">
-        <p class="mb-2 text-xs mr-4">
-          Loading bonus anda
-        </p>
-        <svg class="w-6 h-6" fill="hsl(0, 85%, 50%)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
-            <animateTransform attributeName="transform" type="rotate" dur="0.75s" values="0 12 12;360 12 12" repeatCount="indefinite"/>
-          </path>
-        </svg>
-      </div>
-      <div id="guarantee-content" class="hidden">
+      <div id="guarantee-content">
         <p class="mb-2 text-sm">
           Daftar hari ini untuk dapatkan jaminan
           <span class="text-yellow-400 font-bold">full refund</span> 
@@ -131,7 +125,9 @@
       35 students pelajar dah join
     </p>
 
-
+    <div id="toast" class="hidden fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg text-sm animate-fadeIn">
+      
+    </div>
 
   </div>
 
@@ -140,26 +136,42 @@
   <script>
 
     function startDownload() {
-      // Show toast
+      const spinner = document.getElementById("loadingSpinner");
       const toast = document.getElementById("toast");
-      toast.classList.remove("hidden");
+      const step1C = document.getElementById("step1Content");
 
-      // Hide after 2 seconds
+      // Show spinner inside step1 content box
+      spinner.classList.remove("hidden");
+      step1C.classList.add("hidden");
+
+      // After 2 seconds, hide spinner and show step 2
       setTimeout(() => {
-        toast.classList.add("hidden");
+        spinner.classList.add("hidden");
         goToStep(2);
-      }, 2000);
 
-      // Start download after a tiny delay so toast shows first
-      // setTimeout(() => {
-      //   const link = document.createElement('a');
-      //   link.href = "Kamus_Cpp.pdf"; // must be on same domain
-      //   link.download = "Kamus_Cpp.pdf";
-      //   document.body.appendChild(link);
-      //   link.click();
-      //   document.body.removeChild(link);
-      // }, 300);
+        // Show toast for 3 seconds
+        toast.textContent = "Downloading...";
+        toast.classList.remove("hidden");
+
+        setTimeout(() => {
+          console.log("hiding toast");
+          toast.classList.add("hidden");
+        }, 5)
+
+        setTimeout(() => {
+          // Trigger download
+          const link = document.createElement('a');
+          link.href = "Kamus_Cpp.pdf";
+          link.download = "Kamus_Cpp.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, 5000);
+
+      }, 2000);
     }
+
+
 
     var currStep = 1;
 
@@ -187,15 +199,13 @@
       // Hide all steps
       document.getElementById('step1').classList.add('hidden');
       document.getElementById('step2').classList.add('hidden');
+      const step1C = document.getElementById("step1Content");
+
+      // Show spinner inside step1 content box
+      step1C.classList.remove("hidden");
 
       // Show the selected step
       document.getElementById('step' + step).classList.remove('hidden');
-
-      // Reset circles
-      // ['step1Circle', 'step2Circle'].forEach(id => {
-      //   document.getElementById(id).classList.remove('bg-blue-500', 'text-white');
-      //   document.getElementById(id).classList.add('bg-gray-300', 'text-gray-600');
-      // });
 
       // Activate selected circle
       const active = document.getElementById('step' + step + 'Circle');
@@ -215,11 +225,6 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
-      setTimeout(() => {
-          document.getElementById("loading").classList.add("hidden");
-          document.getElementById("guarantee-content").classList.remove("hidden");
-        }, 5000); // 3 seconds
-
 
     }
   </script>
