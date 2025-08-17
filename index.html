@@ -96,12 +96,12 @@
       <div id="guarantee-content">
         <!-- Scarcity message -->
         <p class="text-lg font-bold mb-1">
-          ⚠️ <span id="students-count" class="text-yellow-400">62</span><span class="text-red-400">/100</span> tempat telah diisi!
+          <span id="students-count" class="text-yellow-400">⚡ Flash Sale Sedang Berlangsung!
         </p>
 
         <!-- Urgency message -->
         <p class="text-xs text-gray-300 italic mb-3">
-          Harga akan naik bila dah cukup 100 orang 🚀
+          Join sekarang sebelum harga naik (91 pelajar dah mula bercoding) 🚀
         </p>
 
         <!-- Countdown -->
@@ -110,12 +110,12 @@
     </div>
 
     <script>
-      // Example: dynamically update students from Google Sheets or API
-      const totalStudents = 100;
-      const currentStudents = 62; // Replace with API value
+      // // Example: dynamically update students from Google Sheets or API
+      // const totalStudents = 100;
+      // const currentStudents = 62; // Replace with API value
 
-      document.getElementById("students-count").textContent = currentStudents;
-      document.getElementById("progress-bar").style.width = (currentStudents / totalStudents * 100) + "%";
+      // document.getElementById("students-count").textContent = currentStudents;
+      // document.getElementById("progress-bar").style.width = (currentStudents / totalStudents * 100) + "%";
     </script>
 
 
@@ -229,31 +229,31 @@
     }
   </script>
   <script>
-  const sheetId = "1o_PVByfyy3NNcHfUMK2obi1jquivOHr6PZjvouksqRk";
-  const apiKey = "AIzaSyBU8TMPP0ZUxS_979y6cYdNOU6SfdfBXYc";
-  const range = "Sheet1!B1"; // Cell with student count
-  const totalSeats = 100;
+  // const sheetId = "1o_PVByfyy3NNcHfUMK2obi1jquivOHr6PZjvouksqRk";
+  // const apiKey = "AIzaSyBU8TMPP0ZUxS_979y6cYdNOU6SfdfBXYc";
+  // const range = "Sheet1!B1"; // Cell with student count
+  // const totalSeats = 100;
 
-  fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`)
-    .then(response => response.json())
-    .then(data => {
-      if (!data.values || !data.values[0]) throw new Error("No data found");
+  // fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     if (!data.values || !data.values[0]) throw new Error("No data found");
 
-      const studentsJoined = parseInt(data.values[0][0], 10);
-      const percentage = Math.min((studentsJoined / totalSeats) * 100, 100);
+  //     const studentsJoined = parseInt(data.values[0][0], 10);
+  //     const percentage = Math.min((studentsJoined / totalSeats) * 100, 100);
 
-      // Update text with red number
-      document.getElementById("students-count").textContent = studentsJoined;
+  //     // Update text with red number
+  //     document.getElementById("students-count").textContent = studentsJoined;
 
-      // Update progress bar
-      const progressBar = document.getElementById("progress-bar");
-      progressBar.style.width = percentage + "%";
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      document.getElementById("student-count-text").textContent =
-        "⚠️ Tidak dapat memuat data pelajar.";
-    });
+  //     // Update progress bar
+  //     const progressBar = document.getElementById("progress-bar");
+  //     progressBar.style.width = percentage + "%";
+  //   })
+  //   .catch(error => {
+  //     console.error("Error:", error);
+  //     document.getElementById("student-count-text").textContent =
+  //       "⚠️ Tidak dapat memuat data pelajar.";
+  //   });
   </script>
 
 </body>
