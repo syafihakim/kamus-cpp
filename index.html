@@ -1,292 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Video Lead Magnet</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tripwire Offer Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Gentle pulse animation for border glow effect */
-    @keyframes pulse-slow {
-      0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.5); }
-      50% { box-shadow: 0 0 16px rgba(255, 215, 0, 0.8); }
-    }
-    .animate-pulse-slow {
-      animation: pulse-slow 2.5s infinite;
-    }
-  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col items-center p-6">
+<body class="bg-gray-50 font-sans">
 
-  <!-- Stepper container -->
-  <div class="bg-white max-w-2xl w-full rounded-lg shadow-md p-4 mt-4 mb-6">
-    <div class="flex items-center justify-between">
-      <!-- Step 1 -->
-      <div class="flex flex-col items-center">
-        <button id="step1Circle" 
-                class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 text-white font-bold"
-                onclick="goToStep(1)">
-          1
-        </button>
-        <span class="mt-1 text-xs text-gray-700">Download kamus</span>
-      </div>
+  <!-- ======= 1. Hero Section ======= -->
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center bg-white text-center p-6">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Get Your Free Cheat Sheet Now!</h1>
+    <img src="kamus_M.png" alt="Free Lead Magnet" class="mb-6 rounded-lg shadow-lg">
+    <button onclick="showOTO()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-xl font-semibold transition">Download Now</button>
+  </section>
 
-      <!-- Line -->
-      <div class="flex-1 h-0.5 bg-gray-300 mx-3"></div>
+  <!-- ======= 2. OTO Section ======= -->
+  <section id="oto" class="hidden min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200 p-4 relative">
 
-      <!-- Step 2 -->
-      <div class="flex flex-col items-center">
-        <button id="step2Circle" 
-                class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-600 font-bold shadow-xl"
-                onclick="goToStep(2)">
-          2
-        </button>
-        <span class="mt-1 text-xs text-gray-700">Claim Bonus</span>
-      </div>
-    </div>
-  </div>
+    <!-- Decorative gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-yellow-50 via-white to-yellow-100 opacity-40 pointer-events-none"></div>
 
-
-  <!-- Step Content -->
-  <div id="step1" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 mb-20">
-    <div id="loadingSpinner" class="hidden bg-white bg-opacity-90 flex flex-col justify-center items-center rounded-2xl z-10">
-      <svg class="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-      </svg>
-      <p class="text-lg text-blue-700 font-semibold">Downloading</p>
-    </div>
-    <div id="step1Content" class="flex-col justify-center">
-      <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 1: Download Kamus Coding C++</h2>
-      <img src="Kamus_M.png" alt="Cheatsheet Mockup" class="w-3/5 h-auto rounded shadow-md mb-4 mx-auto" />
-      <!-- Toast container -->
-
-      <!-- Download Button -->
-      <div class="text-center">
-        <a href="#" onclick="startDownload()"
-          class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5">
-          Download Kamus C++
-        </a>
-      </div>
-
-
-    </div>
-  </div>
-
-
-  <div id="step2" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6 border border-gray-100 hidden mb-20">  
-    <h2 class="text-2xl font-bold mb-4 text-gray-800">Step 2: Kelas Coding C++ dari Zero</h2>
-    <p class="text-sm mb-4 text-gray-600">
-      <!-- Harga : RM20 sahaja</br></br> -->
-      💎 Lifetime access</br>
+    <!-- Offer Card -->
+    <div class="relative bg-white shadow-2xl rounded-3xl max-w-3xl w-full p-10 text-center z-10">
       
-      ✅ Belajar anytime, tiada jadual</br>
-      ✅ Video disediakan</br>
-      ✅ Latihan + Jawapan disediakan</br>
-      ✅ Nota disediakan</br>
-      </br>
-
-      🔥 Belajar asas Java dan Python sekaligus!</br>
-      💰 Dijamin puas hati - atau saya bagi full refund</br></br>
-
-      <!-- <b>Harga tak masuk akal RM20!</b></br> -->
-
-    </p>
-    <div class="mb-4 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 text-white pt-4 pb-4 text-center rounded-lg shadow-lg border-l-4 border-yellow-400 animate-pulse-slow">
-      <div id="guarantee-content">
-        <!-- Scarcity message -->
-        <p class="text-lg font-bold mb-1">
-          <span id="students-count" class="text-yellow-400">⚡ Flash Sale : Burung Hantu Special!
-        </p>
-
-        <div id="countdown-container" class="flex flex-col justify-center items-center hidden">
-          <span id="countdown" 
-                class="px-6 py-4 rounded-2xl text-l font-mono text-red-400 tracking-widest">
-            --
-          </span>
-          <span class="text-gray-400 line-through text-2xl">RM40</span>
-          <span id="promo-price-text" class="text-4xl font-bold hidden mb-4"> -- </span>
-          <p class="text-xs mx-3">Khas untuk anda yang baru jawab quiz. Harga kembali RM40 jika tak daftar sekarang</p>
+      <!-- Countdown Timer -->
+      <div class="flex flex-col items-center mb-6">
+        <span class="text-red-600 font-bold text-3xl mb-2">Promo Live Sahaja!</span>
+        <div id="countdown" class="text-4xl font-extrabold text-red-700">--</div>
+        <!-- Countdown Bar -->
+        <div class="w-full h-3 bg-red-200 rounded-full mt-4 overflow-hidden">
+          <div id="countdown-bar" class="h-full bg-red-600 transition-all duration-1000"></div>
         </div>
-
-        <!-- Urgency message -->
-        <!-- <p class="text-xs text-gray-300 italic mb-3">
-          Join sekarang sebelum harga naik (91 pelajar dah mula bercoding) 🚀
-        </p> -->
-
-        <!-- Countdown -->
       </div>
-    </div>
 
-    <a id="a-daftar" href="https://syafihakim.github.io/cpp-level-1-site/" 
-       class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg shadow transition duration-300 hover:shadow-lg hover:-translate-y-0.5 flex justify-center items-center">
-        Nak Daftar Sekarang!
-    </a>
-
-    <div id="toast" class="hidden fixed bottom-6 right-6 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg text-sm animate-fadeIn">
+      <h2 class="text-3xl font-extrabold mb-6 text-gray-800">Mula dari zero sampai boleh buat 10 program dengan <span class="text-blue-600">C++ Level 1!</span></h2>
       
+      <ul class="mb-8 text-left max-w-xl mx-auto space-y-4">
+        <li class="flex items-center gap-3 text-sm"><span class="text-green-500">✔</span> Access 20+ Video Tutorial!</li>
+        <li class="flex items-center gap-3 text-sm"><span class="text-green-500">✔</span> 10 Latihan untuk buktikan pemahaman anda</li>
+        <li class="flex items-center gap-3 text-sm"><span class="text-green-500">✔</span> Lengkap dengan Nota dan Skema Jawapan</li>
+        <li class="flex items-center gap-3 text-sm"><span class="text-green-500">✔</span> Access Seumur Hidup</li>
+        <li class="flex items-center gap-3 text-sm"><span class="text-green-500">✔</span> Bonus Percuma Kamus Python + Java</li>
+        <li class="flex items-center gap-3 text-sm"> ... dengan whatsapp support dan banyak lagi!</li>
+      </ul>
+
+      <div class="text-center font-bold mb-6">
+        <span class="line-through text-gray-400 mr-1 text-md">RM40</span>
+        <span class="text-red-600 text-5xl">RM15</span>
+      </div>
+
+
+      <div class="flex flex-col md:flex-row gap-2 justify-center">
+        <button onclick="takeOffer()" class="bg-gradient-to-r from-green-500 to-green-700 hover:scale-105 text-white px-8 py-4 rounded-xl font-bold transition transform shadow-lg">Saya nak daftar!</button>
+        <button onclick="skipOffer()" class="bg-gray-400 hover:bg-gray-500 px-4 py-2 rounded-xl font-bold text-white transition transform hover:scale-105 shadow-lg">Taknak join</button>
+      </div>
+
+      <!-- Small trust note -->
+      <p class="mt-6 text-xs text-gray-400">💰 Dijamin Puas Hati (atau saya bagi full refund!)</p>
     </div>
+  </section>
 
-  </div>
+  <!-- ======= 3. Download Section ======= -->
+  <section id="download" class="hidden min-h-screen flex flex-col items-center justify-center bg-white text-center p-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Great! Your download has started 🎉</h2>
+    <p class="text-lg mb-4">Kalau download belum mula, tekan je button di bawah.</p>
+    <a href="#" onclick="dl()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-xl font-semibold transition">Download Again</a>
+  </section>
 
-
-  <!-- Inline JavaScript -->
   <script>
+    // ======= Simple Countdown Timer =======
+    let countdownTime = 180; // 3 minutes
+    let countdownInterval;
 
-    function startDownload() {
-      const spinner = document.getElementById("loadingSpinner");
-      const toast = document.getElementById("toast");
-      const step1C = document.getElementById("step1Content");
-
-      // Show spinner inside step1 content box
-      spinner.classList.remove("hidden");
-      step1C.classList.add("hidden");
-
-      // After 2 seconds, hide spinner and show step 2
-      setTimeout(() => {
-        spinner.classList.add("hidden");
-        goToStep(2);
-
-        // Show toast for 3 seconds
-        toast.textContent = "Downloading...";
-        toast.classList.remove("hidden");
-
-        setTimeout(() => {
-          console.log("hiding toast");
-          toast.classList.add("hidden");
-        }, 5000)
-
-        setTimeout(() => {
-          // Trigger download
-          const link = document.createElement('a');
-          link.href = "Kamus_Cpp.pdf";
-          link.download = "Kamus_Cpp.pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }, 5000);
-
-      }, 2000);
-    }
-
-
-
-    var currStep = 1;
-
-    const targetTime = new Date('2025-08-11T17:00:00');
-
-    const countdownEl = document.getElementById("countdown");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetTime - now;
-
-      if (distance < 0) {
-        countdownEl.innerHTML = "Tawaran Tamat";
-        return;
-      }
-
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML = `${hours} jam ${minutes} min ${seconds} saat`;
-    }
-
-    function goToStep(step) {
-      // Hide all steps
-      document.getElementById('step1').classList.add('hidden');
-      document.getElementById('step2').classList.add('hidden');
-      const step1C = document.getElementById("step1Content");
-
-      // Show spinner inside step1 content box
-      step1C.classList.remove("hidden");
-
-      // Show the selected step
-      document.getElementById('step' + step).classList.remove('hidden');
-
-      // Activate selected circle
-      const active = document.getElementById('step' + step + 'Circle');
-      active.classList.remove('bg-gray-300', 'text-gray-600');
-      active.classList.add('bg-blue-500', 'text-white');
-
-      // const video = document.getElementById("myVideo");
-
-      if (step == 2) {
-        // video.pause();
-        document.getElementById("step1Circle").classList.add('bg-blue-500', 'text-white');
-        document.getElementById("step2Circle").classList.add('bg-blue-500', 'text-white');
-      } else {
-        document.getElementById("step1Circle").classList.add('bg-blue-500', 'text-white');
-        document.getElementById("step2Circle").classList.add('bg-gray-300', 'text-gray-600');
-      }
-
-      // updateCountdown();
-      // setInterval(updateCountdown, 1000);
-
-    }
-  </script>
-
-  <!-- The script below is used for countdown -->
-  <script>
-    const sheetId = "1o_PVByfyy3NNcHfUMK2obi1jquivOHr6PZjvouksqRk";
-    const apiKey = "AIzaSyBU8TMPP0ZUxS_979y6cYdNOU6SfdfBXYc";
-    const rangePromo = "Promos!a2:c10";
-    const registerUrl = "https://syafihakim.github.io/cpp-level-1-site/";
-
-    let targetDateFromDB = "";
-    let timer; // declare outside so updateCountdown can access it
-
-    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${rangePromo}?key=${apiKey}`)
-      .then(response => response.json())
-      .then(data => {
-        if (!data.values || !data.values[0]) throw new Error("No data found");
-
-        let promoPriceAmount;
-        let targetDate = null;
-        let promoPriceTextEl = document.getElementById("promo-price-text");
-        const promoCodeFromUrl = new URLSearchParams(window.location.search).get("promo");
-
-        for(let i=0; i<10; i++) {
-          const promoCodeFromDB = data.values[i][0];
-          const targetDateFromDB = data.values[i][1];
-          targetDate = new Date(targetDateFromDB);
-
-          const now = new Date();
-          const diff = targetDate - now;
-
-          if (diff > 0 && promoCodeFromUrl == promoCodeFromDB) {
-            console.log("promo is on!");
-            document.getElementById("countdown-container").classList.remove("hidden");
-            promoPriceTextEl.classList.remove("hidden");
-            promoPriceAmount = data.values[i][2];
-            promoPriceTextEl.textContent = `RM${promoPriceAmount}`;
-            document.getElementById("a-daftar").href = `${registerUrl}?promo=${promoCodeFromUrl}`;
-            break;
-          }
+    function startCountdown() {
+      const timerEl = document.getElementById('countdown');
+      countdownInterval = setInterval(() => {
+        const minutes = Math.floor(countdownTime / 60).toString().padStart(2, '0');
+        const seconds = (countdownTime % 60).toString().padStart(2, '0');
+        timerEl.textContent = `${minutes}:${seconds}`;
+        if (countdownTime <= 0) {
+          clearInterval(countdownInterval);
+        } else {
+          countdownTime--;
         }
+      }, 1000);
+    }
 
-        // Run immediately and every second
-        updateCountdown(targetDate);
-        timer = setInterval(() => updateCountdown(targetDate), 1000);
-      })
-      .catch(err => console.error(err));
+    // ======= Navigation Functions =======
+    function showOTO() {
+      document.getElementById('hero').classList.add('hidden');
+      document.getElementById('oto').classList.remove('hidden');
+      startCountdown();
+    }
 
-    function updateCountdown(targetDate) {
-      const now = new Date();
-      const diff = targetDate - now;
+    function takeOffer() {
+      // Redirect to special tripwire page
+      window.location.href = 'https://syafihakim.github.io/cpp-level-1-site?promo=h123'; 
+    }
 
-      if (diff <= 0) {
-        document.getElementById("countdown").textContent = "00:00:00";
-        clearInterval(timer);
-        return;
-      }
+    function skipOffer() {
+      document.getElementById('oto').classList.add('hidden');
+      document.getElementById('download').classList.remove('hidden');
+      const link = document.createElement('a');
+          
+    }
 
-      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, "0");
-      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
-      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, "0");
-
-      document.getElementById("countdown").textContent = `Tamat dalam ${hours}:${minutes}:${seconds}`;
+    function dl() {
+      const link = document.createElement('a');
+      link.href = "Kamus_Cpp.pdf";
+      link.download = "Kamus_Cpp.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 
